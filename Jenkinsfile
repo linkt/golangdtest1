@@ -53,7 +53,7 @@ pipeline {
       steps {
         dir('/home/jenkins/go/src/github.com/linkt/golangdtest1/charts/golangdtest1') {
           sh "jx step changelog --version v\$(cat ../../VERSION)"
-
+          sh 'helm init --stable-repo-url http://mirror.azure.cn/kubernetes/charts/'
           // release the helm chart
           sh "jx step helm release"
 
